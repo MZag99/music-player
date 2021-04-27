@@ -37,6 +37,8 @@ body{
     width:calc(100% - 30px);
     padding: 10px 10px 10px 150px;
     font-size:15px;
+    opacity:0;
+    z-index:-1;
     
 }
 h4{
@@ -45,6 +47,8 @@ h4{
 }
 .music-container.play .music-info{
     transform: translateY(-120%);
+    opacity:1;
+    z-index:0;
 }
 .img-container{
     width:110px;
