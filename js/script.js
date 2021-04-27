@@ -35,6 +35,22 @@ function pauseSong(){
 
     audio.pause()
 }
+function prevSong(){
+    songIndex--
+    if(songIndex<0){
+        songIndex=songs.length - 1
+    }
+    loadSong(songs[songIndex])
+    playSong()
+}
+function nextSong(){
+    songIndex++
+    if(songIndex>songs.length-1){
+        songIndex=0
+    }
+    loadSong(songs[songIndex])
+    playSong()
+}
 //Event listeners
     playBtn.addEventListener('click',()=>{
     const playBtn = document.querySelector('#play i.fas')    
@@ -47,3 +63,6 @@ function pauseSong(){
         playSong()
     }
 })
+
+prevBtn.addEventListener('click',prevSong)
+nextBtn.addEventListener('click',nextSong)
