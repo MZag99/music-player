@@ -30,6 +30,7 @@ function playSong(){
     audio.play()
 }
 function pauseSong(){
+    musicContainer.classList.remove('play')
     playBtn.querySelector('i.fas').classList.remove('fa-pause')
     playBtn.querySelector('i.fas').classList.add('fa-play')
 
@@ -51,10 +52,14 @@ function nextSong(){
     loadSong(songs[songIndex])
     playSong()
 }
+function updateProgress(e){
+    const {duration, currentTime}=e.srcElement
+    const progressPercent = (currentTime / duration) * 100
+    progress.style.width = ''+progressPercent+'%'
+}
 //Event listeners
-    playBtn.addEventListener('click',()=>{
-    const playBtn = document.querySelector('#play i.fas')    
-    const isPlaying = playBtn.classList.contains('fa-pause')
+playBtn.addEventListener('click',()=>{ 
+    const isPlaying = musicContainer.classList.contains('play')
 
     if(isPlaying){
         pauseSong()
@@ -66,3 +71,4 @@ function nextSong(){
 
 prevBtn.addEventListener('click',prevSong)
 nextBtn.addEventListener('click',nextSong)
+audio.addEventListener('timeupdate', updateProgress)
