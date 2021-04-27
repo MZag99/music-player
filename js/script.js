@@ -26,16 +26,19 @@ function playSong(){
     musicContainer.classList.add('play')
     playBtn.querySelector('i.fas').classList.remove('fa-play')
     playBtn.querySelector('i.fas').classList.add('fa-pause')
+
+    audio.play()
 }
 function pauseSong(){
     playBtn.querySelector('i.fas').classList.remove('fa-pause')
     playBtn.querySelector('i.fas').classList.add('fa-play')
+
+    audio.pause()
 }
 //Event listeners
     playBtn.addEventListener('click',()=>{
     const playBtn = document.querySelector('#play i.fas')    
     const isPlaying = playBtn.classList.contains('fa-pause')
-    console.log(playBtn)
 
     if(isPlaying){
         pauseSong()
